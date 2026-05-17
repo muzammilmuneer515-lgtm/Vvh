@@ -87,7 +87,7 @@ function stopBGM()
   end
 end
 
--- NEW: Lifecycle Management for Home/Recent Buttons
+-- Lifecycle Management for Home/Recent Buttons
 function onPause()
   if bgmPlayer ~= nil and bgmPlayer.isPlaying() then
     bgmPlayer.pause()
@@ -334,7 +334,26 @@ function mainUI()
 
   wrapClick(aboutBtn, function()
     playBGM(bgm1Path) 
-    local layoutA={ ScrollView, layout_width="fill", { LinearLayout, orientation="vertical", background="#000000", layout_width="fill", gravity="center", padding="16dp", {TextView,id="aboutText",text="This tool is developed by Muzammil Muneer",layout_marginBottom="20dp"}, {Button,id="ytBtn",text="Subscribe our YouTube channel Tech with Gamers",layout_width="fill",layout_marginBottom="10dp"}, {Button,id="ytBtn2",text="Subscribe our YouTube channel Digital World For Blind",layout_width="fill",layout_marginBottom="10dp"}, {Button,id="ytBtn3",text="Subscribe our other YouTube channel Hussain Urdu Adab",layout_width="fill",layout_marginBottom="10dp"}, {Button,id="waChannelBtn",text="Follow our WhatsApp channel Digital World For Blind",layout_width="fill",layout_marginBottom="10dp"}, {Button,id="waCommunityBtn",text="Join our WhatsApp community Digital World For Blind",layout_width="fill",layout_marginBottom="10dp"}, {Button,id="feedbackBtn",text="Send Feedback",layout_width="fill",layout_marginBottom="10dp"}, {Button,id="closeAboutBtn",text="Close",layout_width="fill"} } }
+    local layoutA={ 
+      ScrollView, 
+      layout_width="fill", 
+      { 
+        LinearLayout, 
+        orientation="vertical", 
+        background="#000000", 
+        layout_width="fill", 
+        gravity="center", 
+        padding="16dp", 
+        {TextView,id="aboutText",text="This tool is developed by Muzammil Muneer",layout_marginBottom="20dp"}, 
+        {Button,id="ytBtn",text="Subscribe our YouTube channel Tech with Gamers",layout_width="fill",layout_marginBottom="10dp"}, 
+        {Button,id="ytBtn2",text="Subscribe our YouTube channel Digital World For Blind",layout_width="fill",layout_marginBottom="10dp"}, 
+        {Button,id="ytBtn3",text="Subscribe our other YouTube channel Hussain Urdu Adab",layout_width="fill",layout_marginBottom="10dp"}, 
+        {Button,id="waChannelBtn",text="Follow our WhatsApp channel Digital World For Blind",layout_width="fill",layout_marginBottom="10dp"}, 
+        {Button,id="waCommunityBtn",text="Join our WhatsApp community Digital World For Blind",layout_width="fill",layout_marginBottom="10dp"}, 
+        {Button,id="feedbackBtn",text="Send Feedback",layout_width="fill",layout_marginBottom="10dp"}, 
+        {Button,id="closeAboutBtn",text="Close",layout_width="fill"} 
+      } 
+    }
     local v=loadlayout(layoutA); whiteText(aboutText)
     styleButton(ytBtn); styleButton(ytBtn2); styleButton(ytBtn3); styleButton(waChannelBtn); styleButton(waCommunityBtn); styleButton(feedbackBtn); styleButton(closeAboutBtn)
     local d=AlertDialog.Builder(activity).create(); d.setTitle("About"); d.setView(v); d.show()
@@ -564,6 +583,7 @@ function checkComputerTurn()
 end
 
 function usernameScreen()
+  isGameActive = false
   local layout={ LinearLayout, orientation="vertical", background="#000000", gravity="center", padding="16dp", {TextView,id="txt",text="Create your username",gravity="center",textSize="18sp",layout_marginBottom="10dp"}, {EditText,id="nameInput",hint="Enter your username",textColor="#FFFFFF",hintTextColor="#AAAAAA",layout_width="fill",singleLine=true}, {LinearLayout, orientation="horizontal", layout_marginTop="20dp", {Button,id="cancelBtn",text="Cancel",layout_width="0dp",layout_weight="1"}, {Button,id="saveBtn",text="Save",layout_width="0dp",layout_weight="1"} } }
   activity.setContentView(loadlayout(layout))
   whiteText(txt); styleButton(cancelBtn); styleButton(saveBtn)
@@ -578,6 +598,7 @@ function usernameScreen()
 end
 
 function welcome2()
+  isGameActive = false
   local layout={ LinearLayout, orientation="vertical", background="#000000", gravity="center", layout_width="fill", layout_height="fill", {TextView,id="t2",text="This tool is developed by Muzammil Muneer",gravity="center",textSize="18sp"}, {Space, layout_height="20dp"}, {Button,id="n2",text="Next",layout_width="200dp"} }
   activity.setContentView(loadlayout(layout))
   whiteText(t2); styleButton(n2)
@@ -585,6 +606,7 @@ function welcome2()
 end
 
 function welcome1()
+  isGameActive = false
   playBGM(bgm1Path) 
   local layout={ LinearLayout, orientation="vertical", background="#000000", gravity="center", layout_width="fill", layout_height="fill", {TextView,id="t1",text="Welcome to Card Games",gravity="center",textSize="22sp"}, {Space, layout_height="10dp"}, {TextView,id="t1sub",text="This tool is specially designed for visually impaired persons. Here you will find various types of card games to play and enjoy...",gravity="center",textSize="16sp",layout_marginLeft="20dp",layout_marginRight="20dp"}, {Space, layout_height="20dp"}, {Button,id="n1",text="Next",layout_width="200dp"} }
   activity.setContentView(loadlayout(layout))
